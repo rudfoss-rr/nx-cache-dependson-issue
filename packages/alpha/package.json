@@ -1,0 +1,10 @@
+{
+	"private": true,
+	"name": "@nx-cache/alpha",
+	"version": "1.0.0",
+	"type": "module",
+	"sideEffects": false,
+	"dependencies": {
+		"@nx-cache/bravo": "workspace:*"
+	}
+}

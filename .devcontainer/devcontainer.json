@@ -1,0 +1,26 @@
+{
+	"name": "NxTest",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"installYarnUsingApt": true,
+			"version": "lts",
+			"pnpmVersion": "latest",
+			"nvmVersion": "latest"
+		}
+	},
+	"postCreateCommand": "pnpm run init",
+
+	"remoteUser": "vscode",
+	"containerUser": "vscode",
+	"customizations": {
+		"vscode": {
+			"extensions": ["nrwl.angular-console", "biomejs.biome"],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh"
+			}
+		}
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"name": "alpha",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"projectType": "application",
+	"sourceRoot": "packages/alpha/src",
+	"tags": [],
+	"targets": {
+		"serve": {
+			"cache": false,
+			"continuous": true,
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "tsx --watch {projectRoot}/src/main.ts"
+			}
+		},
+		"build": {
+			"cache": true,
+			"dependsOn": ["^build"],
+			"inputs": ["project"],
+			"outputs": ["{projectRoot}/built/**"],
+			"executor": "nx:run-commands",
+			"options": {
+				"cwd": "{projectRoot}",
+				"command": "vite build"
+			}
+		},
+		"buildChain": {
+			"cache": true,
+			"dependsOn": ["^build"],
+			"inputs": ["project", "^project"],
+			"outputs": ["{projectRoot}/built/**"],
+			"executor": "nx:run-commands",
+			"options": {
+				"cwd": "{projectRoot}",
+				"command": "vite build"
+			}
+		}
+	}
+}

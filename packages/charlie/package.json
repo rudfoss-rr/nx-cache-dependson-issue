@@ -1,0 +1,10 @@
+{
+	"private": true,
+	"name": "@nx-cache/charlie",
+	"version": "1.0.0",
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": "./src/charlie.ts"
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"extends": "../../tsconfig.base.json",
+	"compileOnSave": false,
+	"compilerOptions": {
+		"outDir": "./built"
+	},
+	"include": ["src/**/*.ts", "package.json"]
+}

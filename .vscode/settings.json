@@ -1,0 +1,10 @@
+{
+  "editor.rulers": [110],
+	"editor.wordWrapColumn": 110,
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "explicit"
+	},
+	"git.autofetch": true
+}

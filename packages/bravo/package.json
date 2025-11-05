@@ -1,0 +1,13 @@
+{
+	"private": true,
+	"name": "@nx-cache/bravo",
+	"version": "1.0.0",
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": "./src/bravo.ts"
+	},
+	"dependencies": {
+		"@nx-cache/charlie": "workspace:*"
+	}
+}

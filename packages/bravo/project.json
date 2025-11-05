@@ -1,0 +1,19 @@
+{
+	"name": "bravo",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"projectType": "library",
+	"sourceRoot": "packages/bravo/src",
+	"tags": [],
+	"targets": {
+		"build": {
+			"cache": true,
+			"dependsOn": ["^build"],
+			"inputs": ["project"],
+			"outputs": ["{projectRoot}/built/**"],
+			"executor": "nx:run-commands",
+			"options": {
+				"command": "echo \"Build bravo @ $(date +%s)\""
+			}
+		}
+	}
+}
