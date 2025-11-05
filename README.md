@@ -18,6 +18,14 @@ The problem occurs if a target defines a dependency on another target in depende
 }
 ```
 
+Where the named input `project` defined in `nx.json` is:
+
+```json
+"namedInputs": {
+  "project": ["{projectRoot}/**", "!{projectRoot}/node_modules/**", "!{projectRoot}/built/**"]
+}
+```
+
 Resulting in this dependency chain:
 
 ```
