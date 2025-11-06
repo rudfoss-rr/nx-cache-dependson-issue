@@ -1,8 +1,8 @@
 # Nx-Cache issue with dependsOn
 
-This repo demonstrates the issue where a projects `dependsOn` chain does not invalidate the upstream cache when changes occur in a downstream project.
+This repo demonstrates the issue where a projects `dependsOn` chain does not invalidate the downstream cache when changes occur in a upstream project.
 
-The problem occurs if a target defines a dependency on another target in dependencies. The `project.json` in `packages/alpha` defines build like this:
+The problem occurs if a target defines a dependency on another target in `dependsOn` and any direct or indirect dependencies are changed invalidating their cache inputs. The `project.json` in `packages/alpha` defines build like this:
 
 ```json
 "build": {
@@ -32,7 +32,7 @@ Resulting in this dependency chain:
 alpha:build -> bravo:build -> charlie:build
 ```
 
-Configured like this I would expect that if the cache key for `bravo:build` or `charlie:build` were to change it would result in an invalidation of `alpha:build` as well. Otherwise what would be the point of declaring it as a dependency?
+Configured like this I would expect that if the cache key for `bravo:build` or `charlie:build` were to change (i.e. due to a code change) it would result in an invalidation of `alpha:build` as well. Otherwise what would be the point of declaring it as a dependency?
 
 ## Reproduce the problem
 
@@ -83,7 +83,7 @@ console.log(`http://localhost:${port}`);
 
 ## Workaround
 
-I can get the "correct" behaviour by adding `^project` to the inputs of `build` in `alpha` as shown in the `alpha:buildChain` target, but this would require that **alpha** knows what inputs should invalidate all dependent targets up the chain for all projects.
+I can get the "correct" behaviour by adding `^project` to the inputs of `build` in `alpha` as shown in the `alpha:buildChain` target, but this would require that **alpha** knows what inputs should invalidate all dependent targets up the chain for all projects. This does not seem like a scalable workaround.
 
 ```json
 "buildChain": {
@@ -100,5 +100,3 @@ I can get the "correct" behaviour by adding `^project` to the inputs of `build` 
 ```
 
 ![Using ^projects to depend on chained inputs](img/ancestor-projects-input-dependency.png)
-
-This does not seem like a scalable workaround.
