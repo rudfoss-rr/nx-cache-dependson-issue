@@ -11,6 +11,9 @@
 			"nvmVersion": "latest"
 		}
 	},
+	"containerEnv": {
+		"NX_DAEMON": "true"
+	},
 	"postCreateCommand": "pnpm run init",
 
 	"remoteUser": "vscode",
